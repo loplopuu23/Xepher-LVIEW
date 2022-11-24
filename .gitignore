@@ -1,0 +1,8 @@
+boost
+packages
+winstealer/cmake
+winstealer/__pycache__
+winstealer/*.lib
+winstealer/Release
+winstealer/*.dll
+.vs

@@ -259,8 +259,8 @@ public:
 		return GameData::GetSpellInfoByName(name);
 	}
 	void DebugTarget(const Vector2& pos) {
-		std::cout << "DEBUG_TARGET_POSITION_X: " << pos.x << std::endl;
-		std::cout << "DEBUG_TARGET_POSITION_Y: " << pos.y << std::endl;
+		//std::cout << "DEBUG_TARGET_POSITION_X: " << pos.x << std::endl;
+		//std::cout << "DEBUG_TARGET_POSITION_Y: " << pos.y << std::endl;
 	}
 	void MoveCursor(const Vector2& pos) {
 		Input::Move(pos.x, pos.y);

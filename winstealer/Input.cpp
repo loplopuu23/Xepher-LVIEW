@@ -90,9 +90,6 @@ Vector2 Input::GetCursorPosition()
 {
 	POINT pos;
 	GetCursorPos(&pos);
-	//std::cout << "GET_CURSOR_POSITION" << std::endl;
-	//std::cout << "POS X: " <<pos.x << "POS Y: "<<pos.y << std::endl;
-
 	return { (float)pos.x, (float)pos.y };
 }
 
@@ -179,6 +176,22 @@ void Input::ClickAt(bool leftClick, float x, float y)
 	input.mi.dwFlags = MOUSEEVENTF_MOVE | MOUSEEVENTF_ABSOLUTE;
 	input.mi.dx = (LONG)(oldPos.x * (65535.0f / fScreenWidth));
 	input.mi.dy = (LONG)(oldPos.y * (65535.0f / fScreenHeight));
+	SendInput(1, &input, sizeof(INPUT));
+	SendInput(1, &input, sizeof(INPUT));
+}
+
+void Input::MoveCursorTo(float x, float y)
+{
+	static float fScreenWidth = (float)::GetSystemMetrics(SM_CXSCREEN) - 1;
+	static float fScreenHeight = (float)::GetSystemMetrics(SM_CYSCREEN) - 1;
+
+	INPUT input = { 0 };
+	input.type = INPUT_MOUSE;
+	input.mi.dwFlags = MOUSEEVENTF_MOVE | MOUSEEVENTF_ABSOLUTE;
+	input.mi.dx = (LONG)(x * (65535.0f / fScreenWidth));
+	input.mi.dy = (LONG)(y * (65535.0f / fScreenHeight));
+
+	// Sometimes this fails idk why the fuck but calling the function two times seems to solve it
 	SendInput(1, &input, sizeof(INPUT));
 	SendInput(1, &input, sizeof(INPUT));
 }

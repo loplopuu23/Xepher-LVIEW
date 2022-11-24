@@ -37,6 +37,8 @@ namespace Input {
 	/// Sends a right click input
 	void     PressRightClick();
 
+	void     MoveCursorTo(float x, float y);
+
 	void Move(int x, int y);
 
 	void ClipMouse(float x, float y);
